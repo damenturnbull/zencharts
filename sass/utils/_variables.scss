@@ -1,0 +1,65 @@
+////////////////////////////////////////////////////////////////////////////////
+// Variables
+// --------------------
+//
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// Breakpoints
+//
+$sm-min: 760px;
+$md-min: 980px;
+$lg-min: 1200px;
+
+//
+// Container
+//
+$container-gutter-xs: 20px;
+$container-gutter-sm: 80px;
+$container-gutter-md: 65px;
+$container-gutter-lg: 70px;
+
+$container-width-sm:  $sm-min;
+$container-width-md:  $md-min;
+$container-width-lg:  $lg-min;
+
+//
+// Heights
+//
+$navigation_height:   40px;
+$footer_height:       auto;
+$header_height:       60px;
+
+//
+// Padding
+//
+$padding_section:     10;
+$padding_mobile:      5;
+
+//
+// Colors
+//
+$color_base:          #78a300;
+$color_text_base:     #333;
+
+//
+// Backgrounds
+//
+$bg_header:           $color_base;        
+$bg_main:             #f8f8f8; 
+
+//
+// Fonts
+//
+$font_primary:      helvetica, Arial, sans-serif;
+$font_secondary:    helvetica, Arial, sans-serif;
+$font_heading:      helvetica, Arial, sans-serif;
+$monospace_font:    "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+$color_link:            $color_base;
+$visited_link_color:    $color_base;
+$active_link_color:     inherit;
+
+$selection_text_color:  #fff;
+$selection_bg_color:    #fe57a1;
+

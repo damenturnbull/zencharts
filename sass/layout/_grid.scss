@@ -1,0 +1,41 @@
+////////////////////////////////////////////////////////////////////////////////
+// Grid Styling
+// --------------------
+//
+////////////////////////////////////////////////////////////////////////////////
+
+.container {
+  padding-left: $container-gutter-xs;
+  padding-right: $container-gutter-xs;
+
+  @include break-min($sm-min) {
+    padding-left: $container-gutter-sm;
+    padding-right: $container-gutter-sm;
+  }
+
+  @include break-min($md-min) {
+    padding-left: $container-gutter-md;
+    padding-right: $container-gutter-md;
+  }
+
+  @include break-min($lg-min) {
+    padding-left: $container-gutter-lg;
+    padding-right: $container-gutter-lg;
+  }
+}
+
+// Columns
+@mixin col-3-wrap {
+  @include break-min($sm-min) {
+    width: 100%;
+    margin: 0px -1%;
+  }
+}
+
+@mixin col-3 {
+  @include break-min($sm-min) {
+    float: left;
+    width: 31.33333%;
+    margin: 0px 1%;
+  }
+}

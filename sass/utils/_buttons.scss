@@ -1,0 +1,66 @@
+////////////////////////////////////////////////////////////////////////////////
+// Component
+// --------------------
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// Buttons
+//
+.btn {
+  display: inline-block;
+  height: 46px;
+  color: $btn-dark;
+  border: solid 3px $btn-dark;
+  background-color: transparent;
+  padding: 0px 25px;
+  text-decoration: none;
+  text-align: center;
+  @include border-radius(18px);
+  font-family: $font-heading;
+  @include font-line(17px, 46px);
+  
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include break-max($sm-min) {
+    display: block;
+    margin-bottom: 5px;
+  }  
+}
+
+.btn--dark {
+  border: solid 3px $btn-dark;
+
+  &:hover {
+    color: $btn-dark-hover;
+    border: solid 3px $btn-dark-hover;
+  }
+}
+
+.btn--light {
+  color: $btn-light;
+  border: solid 3px $btn-light;
+  background-color: transparent;
+
+  &:hover {
+    color: $btn-light-hover;
+    border: solid 3px $btn-light-hover;
+  }
+}
+
+.btn--white {
+  color: #ffffff;
+  border: solid 3px #ffffff;
+  background-color: transparent;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+
+.btn--block {
+  display: block;
+  margin-bottom: 8px;
+}

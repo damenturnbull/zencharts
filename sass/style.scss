@@ -1,0 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Page Styling
+// --------------------
+// This file combines all partials into one main style sheet, to be loaded on 
+// all pages.
+////////////////////////////////////////////////////////////////////////////////
+
+@import "utils/index"; 
+@import "vendor/index";
+
+// Project
+@import "layout/index";
+@import "base/index";
+@import "components/index";
