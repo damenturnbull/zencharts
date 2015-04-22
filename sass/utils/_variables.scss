@@ -51,9 +51,9 @@ $bg_main:             #f8f8f8;
 //
 // Fonts
 //
-$font_primary:      helvetica, Arial, sans-serif;
-$font_secondary:    helvetica, Arial, sans-serif;
-$font_heading:      helvetica, Arial, sans-serif;
+$font_primary:      Montserrat, Arial, sans-serif;
+$font_secondary:    $font_primary;
+$font_heading:      $font_primary;
 $monospace_font:    "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
 $color_link:            $color_base;

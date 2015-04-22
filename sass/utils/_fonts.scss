@@ -1,0 +1,12 @@
+//
+// Fonts
+// --------------------------------------------------
+
+// Montserrat
+// ~~~~~~~~~~
+// https://www.google.com/fonts/specimen/Montserrat
+@include font-face(Montserrat, '../../fonts/Montserrat/montserrat-hairline-webfont', 100);
+@include font-face(Montserrat, '../../fonts/Montserrat/montserrat-light-webfont', 300);
+@include font-face(Montserrat, '../../fonts/Montserrat/montserrat-regular-webfont', 400);
+@include font-face(Montserrat, '../../fonts/Montserrat/montserrat-bold-webfont', 600);
+@include font-face(Montserrat, '../../fonts/Montserrat/montserrat-black-webfont', 900);

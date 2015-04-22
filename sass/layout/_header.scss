@@ -1,0 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+// Header
+// --------------------
+//
+////////////////////////////////////////////////////////////////////////////////
+
+.header {
+  background: $bg_header;
+  text-align: center;
+  padding: 120px 0px;
+  color: white;
+}
+
+.header__title {
+  text-transform: uppercase;
+}
+
+.header__desc {
+  padding-top: 20px;
+  @include font-size(20);
+}

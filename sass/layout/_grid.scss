@@ -7,20 +7,24 @@
 .container {
   padding-left: $container-gutter-xs;
   padding-right: $container-gutter-xs;
+  margin: 0 auto;
 
   @include break-min($sm-min) {
     padding-left: $container-gutter-sm;
     padding-right: $container-gutter-sm;
+    width: $container-width-sm;
   }
 
   @include break-min($md-min) {
     padding-left: $container-gutter-md;
     padding-right: $container-gutter-md;
+    width: $container-width-md;
   }
 
   @include break-min($lg-min) {
     padding-left: $container-gutter-lg;
     padding-right: $container-gutter-lg;
+    width: $container-width-lg;
   }
 }
 

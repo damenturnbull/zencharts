@@ -1,3 +1,33 @@
+@font-face {
+  font-family: Montserrat;
+  font-weight: 100;
+  font-style: normal;
+  src: font-url("../../fonts/Montserrat/montserrat-hairline-webfont.eot");
+  src: font-url("../../fonts/Montserrat/montserrat-hairline-webfont.eot?#iefix") format("embedded-opentype"), font-url("../../fonts/Montserrat/montserrat-hairline-webfont.woff") format("woff"), font-url("../../fonts/Montserrat/montserrat-hairline-webfont.ttf") format("truetype"), font-url("../../fonts/Montserrat/montserrat-hairline-webfont.svg#Montserrat") format("svg"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: 300;
+  font-style: normal;
+  src: font-url("../../fonts/Montserrat/montserrat-light-webfont.eot");
+  src: font-url("../../fonts/Montserrat/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), font-url("../../fonts/Montserrat/montserrat-light-webfont.woff") format("woff"), font-url("../../fonts/Montserrat/montserrat-light-webfont.ttf") format("truetype"), font-url("../../fonts/Montserrat/montserrat-light-webfont.svg#Montserrat") format("svg"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  src: font-url("../../fonts/Montserrat/montserrat-regular-webfont.eot");
+  src: font-url("../../fonts/Montserrat/montserrat-regular-webfont.eot?#iefix") format("embedded-opentype"), font-url("../../fonts/Montserrat/montserrat-regular-webfont.woff") format("woff"), font-url("../../fonts/Montserrat/montserrat-regular-webfont.ttf") format("truetype"), font-url("../../fonts/Montserrat/montserrat-regular-webfont.svg#Montserrat") format("svg"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: normal;
+  src: font-url("../../fonts/Montserrat/montserrat-bold-webfont.eot");
+  src: font-url("../../fonts/Montserrat/montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"), font-url("../../fonts/Montserrat/montserrat-bold-webfont.woff") format("woff"), font-url("../../fonts/Montserrat/montserrat-bold-webfont.ttf") format("truetype"), font-url("../../fonts/Montserrat/montserrat-bold-webfont.svg#Montserrat") format("svg"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: 900;
+  font-style: normal;
+  src: font-url("../../fonts/Montserrat/montserrat-black-webfont.eot");
+  src: font-url("../../fonts/Montserrat/montserrat-black-webfont.eot?#iefix") format("embedded-opentype"), font-url("../../fonts/Montserrat/montserrat-black-webfont.woff") format("woff"), font-url("../../fonts/Montserrat/montserrat-black-webfont.ttf") format("truetype"), font-url("../../fonts/Montserrat/montserrat-black-webfont.svg#Montserrat") format("svg"); }
 .debug1 {
   background-color: #fdc689; }
 
@@ -15,25 +45,49 @@
 
 .container {
   padding-left: 20px;
-  padding-right: 20px; }
+  padding-right: 20px;
+  margin: 0 auto; }
   @media only screen and (min-width: 760px) {
     .container {
       padding-left: 80px;
-      padding-right: 80px; } }
+      padding-right: 80px;
+      width: 760px; } }
   @media only screen and (min-width: 980px) {
     .container {
       padding-left: 65px;
-      padding-right: 65px; } }
+      padding-right: 65px;
+      width: 980px; } }
   @media only screen and (min-width: 1200px) {
     .container {
       padding-left: 70px;
-      padding-right: 70px; } }
+      padding-right: 70px;
+      width: 1200px; } }
+
+.header {
+  background: #78a300;
+  text-align: center;
+  padding: 120px 0px;
+  color: white; }
+
+.header__title {
+  text-transform: uppercase; }
+
+.header__desc {
+  padding-top: 20px;
+  font-size: 20px;
+  line-height: 24px;
+  font-size: 2rem;
+  line-height: 2.4rem; }
+
+.main {
+  padding: 60px 0px;
+  text-align: center; }
 
 a {
   color: #78a300; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: helvetica, Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   line-height: 1.3em; }
 
 h1 {
@@ -43,10 +97,10 @@ h1 {
   line-height: 4rem; }
   @media only screen and (min-width: 760px) {
     h1 {
-      font-size: 104px;
-      line-height: 104px;
-      font-size: 10.4rem;
-      line-height: 10.4rem; } }
+      font-size: 70px;
+      line-height: 74px;
+      font-size: 7rem;
+      line-height: 7.4rem; } }
 
 h2 {
   font-size: 24px;
@@ -106,7 +160,7 @@ abbr {
 
 b, strong {
   font-weight: bold;
-  font-family: helvetica, Arial, sans-serif; }
+  font-family: Montserrat, Arial, sans-serif; }
 
 blockquote {
   margin: 1em 40px; }
@@ -354,12 +408,13 @@ html {
   -ms-text-size-adjust: 100%; }
 
 html, button, input, select, textarea {
-  font-family: helvetica, Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   color: #333; }
 
 body {
+  background: #f8f8f8;
   margin: 0;
-  font-family: helvetica, Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   letter-spacing: 0.03em;
   font-size: 14px;
   line-height: 16.8px;
