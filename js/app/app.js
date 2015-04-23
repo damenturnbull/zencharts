@@ -11,6 +11,9 @@ var MyApp = (function($) {
 
     init: function() {
       this.requestJSON();
+        $('#graphA').highcharts(graphA);
+        $('#graphB').highcharts(graphB);
+        $('#graphC').highcharts(graphC);
     },
 
     requestJSON: function() {
