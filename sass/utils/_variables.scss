@@ -9,7 +9,7 @@
 //
 $sm-min: 760px;
 $md-min: 980px;
-$lg-min: 1200px;
+$lg-min: 980px;
 
 //
 // Container
@@ -51,8 +51,8 @@ $bg_main:             #f8f8f8;
 //
 // Fonts
 //
-$font_primary:      Montserrat, Arial, sans-serif;
-$font_secondary:    $font_primary;
+$font_primary:      "Montserrat", Arial, sans-serif;
+// $font_secondary:    "MontserratBold", Arial, sans-serif;
 $font_heading:      $font_primary;
 $monospace_font:    "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
@@ -62,4 +62,14 @@ $active_link_color:     inherit;
 
 $selection_text_color:  #fff;
 $selection_bg_color:    #fe57a1;
+
+// 
+// Buttons
+//
+$btn_bg:                #fda028;
+$btn_bg_hover:          #ffab1a;
+$btn_bg_active:         #cf7c11;
+
+$btn_height:            60px;
+
 

@@ -181,7 +181,7 @@ html, button, input, select, textarea {
 body {
   background: $bg_main;
   margin: 0;
-  font-family: $font_secondary;
+  font-family: $font_primary;
   letter-spacing: 0.03em;
   @include font-size(14);
 

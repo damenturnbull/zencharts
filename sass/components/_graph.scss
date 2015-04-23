@@ -5,6 +5,11 @@
 
 .graph {
   min-width: 300px;
-  height: 400px;
-  margin: 0 auto;
+  min-height: 400px;
+  margin: 0px auto 60px auto;
+}
+
+.graph__inner {
+  padding: 40px;
+  background: white;
 }
