@@ -1,6 +1,5 @@
 // My Application
-;var MyApp = (function($) {
-
+var MyApp = (function($) {
   'use strict';
 
   return {
@@ -11,48 +10,8 @@
     },
 
     init: function() {
-      // Store 
-      this.testAjax();
-      // this.requestJSON();
+      this.requestJSON();
     },
-
-    testAjax: function() {
-      // var username = "damenturnbull@gmail.com";
-      // var password = "1the2one3"; 
-      var username = "damenturnbull@gmail.com/token";
-      var password = "6BAyvE4LKXDtaoLB3t2jyNeYIj3qtshWxs2WH80Y"; 
-
-      function make_base_auth(username, password) {
-        var tok = username + ':' + password;
-        var hash = btoa(tok);
-        return "Basic " + hash;
-      }
-
-      $.ajaxSetup({
-          headers: { 'Authorization': "Basic ZGFtZW50dXJuYnVsbEBnbWFpbC5jb20vdG9rZW46NkJBeXZFNExLWER0YW9MQjN0Mmp5TmVZSWozcXRzaFd4czJXSDgwWQ==" }
-      });
-
-      $.ajax({
-          type: "GET",
-          // url: "http://jsonplaceholder.typicode.com/posts",
-          url: "https://fando.zendesk.com/api/v2/tickets.json",
-          dataType: 'jsonp',
-          jsonp: false,
-          async: true,
-          // data: '{}',
-          beforeSend: function (xhr){ 
-              // xhr.setRequestHeader("Authorization", "Basic ZGFtZW50dXJuYnVsbEBnbWFpbC5jb20vdG9rZW46NkJBeXZFNExLWER0YW9MQjN0Mmp5TmVZSWozcXRzaFd4czJXSDgwWQ==");
-              // xhr.setRequestHeader('Authorization', make_base_auth(username, password)); 
-          },
-          success: function () {
-            console.log('success');
-          },
-          complete: function(data) {
-            console.log(data.responseText);
-          }
-      });
-    },
-
 
     requestJSON: function() {
       // Request JSON
