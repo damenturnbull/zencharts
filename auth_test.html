@@ -9,11 +9,12 @@
     <p id="response" style="display: none;"><span style="float: left; margin-right: 10px;">Response:</span><textarea id="response_area" style="width: 500px; height:200px;"></textarea></p>
     <img id="spinner" src="https://raw.github.com/sjhcockrell/spinners/master/gif/spinner_16.gif" style="display:none;" />
 
+    <a href="https://fando.zendesk.com/oauth/authorizations/new?client_id=beautifully_simple_report&amp;response_type=token&amp;redirect_uri=http://localhost:8080/auth_test.html&amp;scope=read">Load Reports</a>
+
     <form action=" https://fando.zendesk.com/oauth/authorizations/new" id="authorize" style="display:none;" method="GET">
       <input type="hidden" name="client_id" value="beautifully_simple_report" />
       <input type="hidden" name="response_type" value="token" />
       <input type="hidden" name="redirect_uri" value="http://localhost:8080/auth_test.html" />
-      <!-- Space separated scope -->
       <input type="text" name="scope" value="read write" />
 
       <input type="submit" value="Authorize!" />
