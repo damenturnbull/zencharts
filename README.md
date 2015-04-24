@@ -23,19 +23,17 @@ Mock reports are loading by default. These reports use mock data based on Highch
 
 #### Live Reports
 
-*Dependency:*
-
 Live reports replace the default graph data with data from a Zendesk endpoint. 
 
-**The user must have access to a zendesk subdomain eg. https://{subdomain}.zendesk.com**
+**In order to run Live reports the user must have access to a zendesk subdomain eg. https://{subdomain}.zendesk.com**
 
 To run Live Reports:
 
 1. Clicking on "Live Reports" will redirect you to the a Zendesk subdomain login page.
-2. Login with your credentials for your particular domain.
-3. You will be redirected back to the "Beautifully Simple Report" 
+2. Login using credentials for your particular domain.
+3. You will be redirected back to the zencharts and the Mock data will be replaced with the Live data.
 
-For example, when 'Live Reports' is established, the Pie Chart is updated with data from a API query that returns "end user" information.
+For example, when 'Live Reports' is successful, the 'Customer Access' pie charts will be updated with data for Zendesk "end users".
 
 GET /api/v2/users/search.json?role=end-user
 
