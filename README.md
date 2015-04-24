@@ -1,14 +1,14 @@
 # zencharts - Beautifully Simple Report
 
-Zencharts combines the power of the High Charts library with the Zendesk Developer API. The application connects to with JavaScript over the OAuth protocol. 
+Zencharts demonstrates the use of the High Charts graphing library. Zencharts also connects to the Zendesk Developer API using the OAuth protocol.
+
+Zencharts is not a real company.
 
 ![Alt text](/images/zencharts-screenshot.png?raw=true "zencharts")
 
 ## Run
 
 The repo includes a small nodejs server for use locally. The server uses the 'connect' and 'serve-static' node modules. 
-
-Reference: http://stackoverflow.com/questions/6084360/using-node-js-as-a-simple-web-server
 
 #### 
     $ node server.js
@@ -69,3 +69,14 @@ _Your priority is code clarity and maintainability._
 _Bonus points:_
 
 _- Hook the reporting up to the Zendesk API (https://developer.zendesk.com/rest_api/docs/core/introduction)._
+
+
+## Testing
+
+Zencharts is tested with Karma and Jasmine.
+
+#### 
+    $ karma start
+
+TODO
+- ansychronous testing

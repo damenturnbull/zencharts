@@ -75,20 +75,20 @@ var ZenCharts = (function() {
     },
 
     // TODO - DRY these up...
-    makePieChart: function() {
+    makePieChart: function(chart_name) {
       var datasource = (this.url_access_token) ? 
                         this.source_piechart_live  : 
                         this.source_piechart_mock;
       // Request additional data
-      var pieChartRequest = new OAuthRequest({
+      var piechart_request = new OAuthRequest({
         url:    datasource,
         token:  this.url_access_token
       });
       // Render Graph
       var self = this;
-      pieChartRequest.makeAjaxRequest(function() {
-        if(pieChartRequest.JSONresponse == null) return;
-        self.pie_chart_builder.init(pieChartRequest.JSONresponse);         
+      piechart_request.makeAjaxRequest(function() {
+        if(piechart_request.JSONresponse == null) return;
+        self.pie_chart_builder.init(piechart_request.JSONresponse);         
       });     
     },
 
@@ -97,15 +97,15 @@ var ZenCharts = (function() {
                         this.source_linegraph_live : 
                         this.source_linegraph_mock; 
       // Request additional data
-      var lineGraphRequest = new OAuthRequest({
+      var linegraph_request = new OAuthRequest({
         url:    datasource,
         token:  this.url_access_token 
       });
       // Render Graph
       var self = this;
-      lineGraphRequest.makeAjaxRequest(function() {
-        if(lineGraphRequest.JSONresponse == null) return;
-        self.line_graph_builder.init(lineGraphRequest.JSONresponse);         
+      linegraph_request.makeAjaxRequest(function() {
+        if(linegraph_request.JSONresponse == null) return;
+        self.line_graph_builder.init(linegraph_request.JSONresponse);         
       });    
     },
 
@@ -114,15 +114,15 @@ var ZenCharts = (function() {
                         this.source_barchart_live : 
                         this.source_barchart_mock;    
       // Request additional data
-      var barChartRequest = new OAuthRequest({
+      var barchart_request = new OAuthRequest({
         url:    datasource,
         token:  this.url_access_token 
       });
       // Render Graph
       var self = this;
-      barChartRequest.makeAjaxRequest(function() {
-        if(barChartRequest.JSONresponse == null) return;
-        self.bar_chart_builder.init(barChartRequest.JSONresponse);         
+      barchart_request.makeAjaxRequest(function() {
+        if(barchart_request.JSONresponse == null) return;
+        self.bar_chart_builder.init(barchart_request.JSONresponse);         
       });  
     }     
 

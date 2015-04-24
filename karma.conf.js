@@ -15,13 +15,16 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      // Vendor
       'js/vendor/jquery-1.11.2.min.js',
       'js/vendor/*.js',
-
-      'js/custom/app/*.js',
+      // Custom
+      'js/custom/app/oauthrequest.js',
       'js/custom/highcharts_scaffolding/*.js',
-      
-      'test/spec/oauthrequestSpec.js'    
+      'js/custom/app/graph_structures.js',
+      'js/custom/app/zencharts.js',
+      // Specs
+      'test/spec/*Spec.js'
     ],
 
 
