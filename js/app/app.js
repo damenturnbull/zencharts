@@ -7,31 +7,6 @@
 // ------------------------------
 // ------------------------------
 // ------------------------------
-var URLWatcher = (function() {
-
-  return { 
-
-    error:        null,
-    access_token: null,
-
-    init: function() {
-      this.getParamatersFromURL();
-    },
-
-    // Check for the existence of '#error=' or '#access_token' in the URL
-    getParamatersFromURL: function() {
-      this.error        = this.getHashParameter("error");
-      this.access_token = this.getHashParameter("access_token");
-    },
-
-    // Decode URL and search for string
-    // Reference: http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
-    getHashParameter: function(name) {
-      return decodeURIComponent((new RegExp('[#|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.hash)||[,""])[1].replace(/\+/g, '%20'))||null;
-    }
-
-  };
-}());
 
 
 
@@ -114,23 +89,11 @@ var GraphA = (function($) {
 
   return { 
 
-    init: function(url) {
-      var self = this;
-
-      // Request for Graph A
-      var request = new APIRequest({
-       url:     url,
-       token :  URLWatcher.access_token 
-      });
-
-      request.makeAjaxRequest(function() {
-        if(request.JSONresponse != null) {
-          var percentages = self.getPercentages(request.JSONresponse);
-          graphA.series[0].data[0].y = percentages[0];
-          graphA.series[0].data[1].y = percentages[1];    
-          $('#graphA').highcharts(graphA);           
-        } 
-      });
+    init: function(data) {
+      var percentages = this.getPercentages(data);
+      graphA.series[0].data[0].y = percentages[0];
+      graphA.series[0].data[1].y = percentages[1];    
+      $('#graphA').highcharts(graphA);           
     }, 
 
     setCutOffDate: function(days_before) {
@@ -138,6 +101,8 @@ var GraphA = (function($) {
       return date.setDate( date.getDate() - days_before );   
     },
 
+    // TODO tighten date adjustment to account for GMT
+    // Currently the time is ignored
     convertZendeskDate: function(raw_date) {
       var date_bits = raw_date.split("T");
       var date      = date_bits[0];
@@ -181,31 +146,53 @@ var GraphA = (function($) {
 // ------------------------------
 $(document).ready(function(){
 
-  URLWatcher.init();
+  // Decode URL and search for string
+  function getURLHashParameter(name) {
+    // Reference: http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+    return decodeURIComponent((new RegExp('[#|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.hash)||[,""])[1].replace(/\+/g, '%20'))||null;
+  }
+  var url_access_token = getURLHashParameter("access_token");
+  var url_error        = getURLHashParameter("error");
 
-  if(URLWatcher.error) {
+  var graph_a_datasource = null;
+  var graph_b_datasource = null;
+  var graph_c_datasource = null;
 
-    // console.log('Error exists in URL.');
+  if (url_access_token) {
 
-  } else if (URLWatcher.access_token) {
-
-    GraphA.init('https://fando.zendesk.com/api/v2/users/search.json?role=end-user');
+    console.log('access_token in the URL.');
+    // Set URLs for live data
+    graph_a_datasource = 'https://fando.zendesk.com/api/v2/users/search.json?role=end-user';
+    // Setup buttons
     $('#btnMockReports').removeClass('btn--selected');
     $('#btnLiveReports').addClass('btn--selected');
 
-    // // // Request for Graph B
-    // var requestB = new APIRequest({
-    //  'url':     'https://fando.zendesk.com/api/v2/users/me.json',
-    //  'token' :  URLWatcher.access_token 
-    // });
-    // requestB.makeAjaxRequest();
-
   } else {
+    console.log('No access_token in URL.');
+
+    if(url_error) {
+      console.log('Error exists in URL.');
+    }
+
+    graph_a_datasource = '/js/app/mock_data/end_users.json';
     GraphA.init('/js/app/mock_data/end_users.json');
-    console.log('No error or token in URL.');
     $('#btnMockReports').addClass('btn--selected');
     $('#btnLiveReports').removeClass('btn--selected');
   }  
+
+  // Render graphs (Mock or Live)
+  var graphARequest = new APIRequest({
+    url:    graph_a_datasource,
+    token:  url_access_token 
+  });
+
+  graphARequest.makeAjaxRequest(function() {
+    if(graphARequest.JSONresponse != null) {
+      GraphA.init(graphARequest.JSONresponse);         
+    } 
+  });    
+
+  // GraphB.init(data);
 
 
 });
