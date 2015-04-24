@@ -201,7 +201,7 @@ $(document).ready(function(){
   }
 
   // Set style of mock and live buttons
-  function setButtons(liveData) {
+  function setGraphButtons(liveData) {
     var btn_mock        = $('#btnMockReports');
     var btn_live        = $('#btnLiveReports');
     var class_selected  = 'btn--selected';
@@ -212,7 +212,13 @@ $(document).ready(function(){
       btn_mock.addClass(class_selected);
       btn_live.removeClass(class_selected);
     }
+
   }
+
+  $('.btn--report').click(function(event){
+    // event.preventDefault();
+    console.log($(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin'));
+  });
 
   var url_access_token = getURLHashParameter("access_token");
   var url_error        = getURLHashParameter("error");
@@ -222,23 +228,25 @@ $(document).ready(function(){
   var graph_c_datasource = null;
 
   if (url_access_token) {
+    setGraphButtons(true);
 
     console.log('access_token in the URL.');
     // Set URLs for live data
     graph_a_datasource = 'https://fando.zendesk.com/api/v2/users/search.json?role=end-user';
+    graph_b_datasource = '';
     
     // Setup buttons
-    setButtons(true);
 
   } else {
+    setGraphButtons(false);
     console.log('No access_token in URL.');
 
     if(url_error) {
       console.log('Error exists in URL.');
     }
 
-    setButtons(false);
     graph_a_datasource = '/js/app/mock_data/end_users.json';
+    graph_b_datasource = '';
   }  
 
   // Render graphs (Mock or Live)

@@ -1754,12 +1754,13 @@
   background-color: #a186be; }
 
 .btn {
+  position: relative;
   display: inline-block;
   text-transform: uppercase;
   height: 60px;
   background-color: #afafaf;
   color: white;
-  padding: 0px 40px;
+  padding: 0px 70px 0px 40px;
   text-decoration: none;
   text-align: center;
   margin: 0 4px;
@@ -1778,7 +1779,9 @@
       display: block;
       margin-bottom: 5px; } }
   .btn .fa {
-    padding-left: 10px; }
+    position: absolute;
+    top: 20px;
+    right: 30px; }
 
 .btn--selected {
   background-color: #fda028; }
