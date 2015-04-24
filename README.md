@@ -1,8 +1,8 @@
-# zencharts - "Beautifully Simple Report"
+# zencharts - Beautifully Simple Report
+
+Zencharts combines the power of the High Charts library with the Zendesk Developer API. The application connects to with JavaScript over the OAuth protocol. 
 
 ![Alt text](/images/zencharts-screenshot.png?raw=true "zencharts")
-
-The application combines the power of the High Charts library with the Zendesk Developer API. The application connects to with JavaScript over the OAuth protocol. 
 
 ## Run
 
@@ -52,7 +52,7 @@ https://developer.zendesk.com/blog/2013/08/02/using-oauth-to-authenticate-with-z
 http://oauth.net/
 
 
-## Specification
+## Original Specification
 
 #### _Beautifully Simple Report_
 
