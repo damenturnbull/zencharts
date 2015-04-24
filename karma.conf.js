@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Fri Apr 24 2015 22:16:18 GMT+1000 (AEST)
+// Generated on Sat Apr 25 2015 07:20:21 GMT+1000 (AEST)
 
 module.exports = function(config) {
   config.set({
@@ -10,12 +10,18 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'requirejs'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'js/*.js', included: false}
+      'js/vendor/jquery-1.11.2.min.js',
+      'js/vendor/*.js',
+
+      'js/custom/app/*.js',
+      'js/custom/highcharts_scaffolding/*.js',
+      
+      'test/spec/oauthrequestSpec.js'    
     ],
 
 

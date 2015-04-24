@@ -1,8 +1,8 @@
 'use strict';
 // ------------------------------
-// Graphs A - Pie Chart
+// Pie Chart
 // ------------------------------
-var GraphA = (function() {
+var PieChartBuilder = (function() {
 
   return { 
 
@@ -54,9 +54,9 @@ var GraphA = (function() {
 }());
 
 // ------------------------------
-// Graphs B - Line Graph
+// Line Graph
 // ------------------------------
-var GraphB = (function() {
+var LineGraphBuilder = (function() {
 
   return { 
 
@@ -64,19 +64,23 @@ var GraphB = (function() {
       $('#graphB').highcharts(graphB);           
     }
 
+    // TODO - Integrate dynamic live data
+
   };
 }());
 
 // ------------------------------
-// Graphs C - Bar Chart
+// Bar Chart
 // ------------------------------
-var GraphC = (function() {
+var BarChartBuilder = (function() {
 
   return { 
 
     init: function(data) {
       $('#graphC').highcharts(graphC);           
     }
+
+    // TODO - Integrate dynamic live data
 
   };
 }());
