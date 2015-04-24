@@ -41,7 +41,7 @@ h1 {
   @include font-size(45, 40);
 
   @include break-min($sm-min) {
-    @include font-size(70, 74);
+    @include font-size(70, 66);
   }
 }
 

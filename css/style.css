@@ -1809,18 +1809,24 @@
 .header {
   background: #78a300;
   text-align: center;
-  padding: 80px 0px;
+  padding: 40px 0px 60px 0px;
   color: white; }
+
+.header__logo {
+  padding: 0px 0px 40px 0px; }
 
 .header__title {
   text-transform: uppercase; }
 
 .header__desc {
-  padding: 20px 0px 40px 0px;
-  font-size: 20px;
-  line-height: 24px;
-  font-size: 2rem;
-  line-height: 2.4rem; }
+  padding: 20px 0px 60px 0px;
+  font-size: 18px;
+  line-height: 21.6px;
+  font-size: 1.8rem;
+  line-height: 2.16rem; }
+
+.header__link {
+  color: white; }
 
 .main {
   padding: 60px 0px;
@@ -1841,9 +1847,9 @@ h1 {
   @media only screen and (min-width: 760px) {
     h1 {
       font-size: 70px;
-      line-height: 74px;
+      line-height: 66px;
       font-size: 7rem;
-      line-height: 7.4rem; } }
+      line-height: 6.6rem; } }
 
 h2 {
   font-size: 24px;
