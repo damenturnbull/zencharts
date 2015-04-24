@@ -1,5 +1,12 @@
 'use strict';
+// ------------------------------
+// ------------------------------
+// ------------------------------
+// URL Watcher
 // Watch for URLs in the token
+// ------------------------------
+// ------------------------------
+// ------------------------------
 var URLWatcher = (function() {
 
   return { 
@@ -18,7 +25,7 @@ var URLWatcher = (function() {
     },
 
     // Decode URL and search for string
-    // http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
+    // Reference: http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
     getHashParameter: function(name) {
       return decodeURIComponent((new RegExp('[#|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.hash)||[,""])[1].replace(/\+/g, '%20'))||null;
     }
@@ -27,6 +34,14 @@ var URLWatcher = (function() {
 }());
 
 
+
+// ------------------------------
+// ------------------------------
+// ------------------------------
+// APIRequest Prototype
+// ------------------------------
+// ------------------------------
+// ------------------------------
 function APIRequest(options) {
   this.url            = options.url;
   this.token          = options.token;
@@ -88,7 +103,82 @@ APIRequest.prototype.getJSON = function() {
 }
 
 
+// ------------------------------
+// ------------------------------
+// ------------------------------
+// Graphs
+// ------------------------------
+// ------------------------------
+// ------------------------------
+var GraphA = (function($) {
+
+  return { 
+
+    init: function(url) {
+      var self = this;
+
+      // Request for Graph A
+      var request = new APIRequest({
+       url:     url,
+       token :  URLWatcher.access_token 
+      });
+
+      request.makeAjaxRequest(function() {
+        if(request.JSONresponse != null) {
+          var percentages = self.getPercentages(request.JSONresponse);
+          graphA.series[0].data[0].y = percentages[0];
+          graphA.series[0].data[1].y = percentages[1];    
+          $('#graphA').highcharts(graphA);           
+        } 
+      });
+    }, 
+
+    setCutOffDate: function(days_before) {
+      var date = new Date(); // Today
+      return date.setDate( date.getDate() - days_before );   
+    },
+
+    convertZendeskDate: function(raw_date) {
+      var date_bits = raw_date.split("T");
+      var date      = date_bits[0];
+      var time      = date_bits[1];
+      return new Date(date);
+    },
+
+    getPercentages: function(json_data) {
+      var end_users       = json_data.users;
+      var count_logged_in = 0;
+
+      for(var i = 0; i < json_data.count; i++) {
+        var last_login_at = end_users[i].last_login_at;
+        // Don't count users that have never logged in
+        if(last_login_at == null) break;
+        // Get dates to compare
+        var last_login_at   = this.convertZendeskDate(last_login_at);
+        var cutoff_date     = this.setCutOffDate(15);
+        // Count...
+        if(last_login_at >= cutoff_date) {
+          count_logged_in++;
+        }
+      }
+      // Calculate percentages
+      var perc_logged_in      = (Math.round((count_logged_in / json_data.count) * 100));
+      var perc_not_logged_in  = 100 - perc_logged_in;
+      return [perc_logged_in, perc_not_logged_in];
+    }
+
+  };
+}(jQuery));
+
+
+
+// ------------------------------
+// ------------------------------
+// ------------------------------
 // Runner
+// ------------------------------
+// ------------------------------
+// ------------------------------
 $(document).ready(function(){
 
   URLWatcher.init();
@@ -99,74 +189,9 @@ $(document).ready(function(){
 
   } else if (URLWatcher.access_token) {
 
-    // console.log('Token exists in URL:' + URLWatcher.access_token);
-
-    // Request for Graph A
-    var requestA = new APIRequest({
-     url:     '/js/app/mock_data/end_users.json',
-     token :  URLWatcher.access_token 
-    });
-
-    var end_users_raw = "raw empty";
-    requestA.makeAjaxRequest(function() {
-      end_users_raw = requestA.JSONresponse;
-      console.log(end_users_raw);
-
-      // console.log(users);
-
-      var end_users       = end_users_raw.users;
-      var count_end_users = end_users.length;
-      var count_logged_in = 0;
-
-      function percentages() {
-        for(var i = 0; i < end_users_raw.count; i++) {
-
-          var last_logged_in_raw = end_users[i].last_login_at;
-
-          // Break if never logged in
-          if(last_logged_in_raw == null) break;
-
-          var date_bits       = last_logged_in_raw.split("T");
-          var date            = date_bits[0];
-          var time            = date_bits[1];
-          var last_logged_in  = new Date(date);
-
-          var cutoff          = new Date(); // Today
-          cutoff.setDate( cutoff.getDate() - 15 ); // 15 days ago
-
-          // console.log("Last login:\t" + last_logged_in);
-          // console.log("Cutoff:\t\t" + cutoff);
-          if(last_logged_in >= cutoff) {
-            count_logged_in++;
-          }
-        }
-        // console.log("count users  is: " + count_end_users);
-        // console.log("count log in is: " + count_logged_in);
-
-        var perc_logged_in      = (Math.round((count_logged_in / count_end_users) * 100));
-        var perc_not_logged_in  = 100 - perc_logged_in;
-        // console.log(perc_logged_in);
-        // console.log(perc_not_logged_in);  
-
-        return {
-          'perc_logged_in':     perc_logged_in,
-          'perc_not_logged_in': perc_not_logged_in
-        }
-      }
-
-      var percentages = percentages();
-      // console.log(percentages.perc_logged_in);
-      // console.log(percentages.perc_not_logged_in);
-
-      graphA.series[0].data[0].y = percentages.perc_logged_in;
-      graphA.series[0].data[1].y = percentages.perc_not_logged_in;    
-      $('#graphA').highcharts(graphA);
-      // $('#graphB').highcharts(graphB);
-      // $('#graphC').highcharts(graphC);      
-
-
-
-    });
+    GraphA.init('https://fando.zendesk.com/api/v2/users/search.json?role=end-user');
+    $('#btnMockReports').removeClass('btn--selected');
+    $('#btnLiveReports').addClass('btn--selected');
 
     // // // Request for Graph B
     // var requestB = new APIRequest({
@@ -176,7 +201,10 @@ $(document).ready(function(){
     // requestB.makeAjaxRequest();
 
   } else {
+    GraphA.init('/js/app/mock_data/end_users.json');
     console.log('No error or token in URL.');
+    $('#btnMockReports').addClass('btn--selected');
+    $('#btnLiveReports').removeClass('btn--selected');
   }  
 
 
