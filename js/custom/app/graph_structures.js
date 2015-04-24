@@ -20,13 +20,14 @@ var GraphA = (function() {
       for(var i = 0; i < json_data.count; i++) {
         var last_login_at = end_users[i].last_login_at;
         // Don't count users that have never logged in
-        if(last_login_at == null) break;
-        // Get dates to compare
-        var last_login_at   = this.convertZendeskDate(last_login_at);
-        var cutoff_date     = this.setCutOffDate(15);
-        // Count...
-        if(last_login_at >= cutoff_date) {
-          count_logged_in++;
+        if(last_login_at != null) {
+          // Get dates to compare
+          var last_login_at   = this.convertZendeskDate(last_login_at);
+          var cutoff_date     = this.setCutOffDate(7);
+          // Count...
+          if(last_login_at >= cutoff_date) {
+            count_logged_in++;
+          }
         }
       }
       // Calculate percentages
