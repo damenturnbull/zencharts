@@ -13,74 +13,6 @@
 // ------------------------------
 // ------------------------------
 // ------------------------------
-// APIRequest Prototype
-// ------------------------------
-// ------------------------------
-// ------------------------------
-function APIRequest(options) {
-  this.url            = options.url;
-  this.token          = options.token;
-  // this.JSONresponse   = {};
-};
-
-APIRequest.prototype.makeAjaxRequest = function(callbackComplete) {
-  console.log('request made');
-  var self = this;
-  var ajax_options = {
-    method: 'GET',
-    async: true,
-    // Add a Basic Auth token in the header
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader("Authorization", "Bearer " + self.token);
-    }
-  };
-
-  // Make the request...
-  $.ajax(this.url, ajax_options)
-    // Done
-    .done(function(data) {
-      self.handleDone(data, self)
-    })
-    // Failure
-    .fail( this.handleFail )
-    // Complete
-    .complete(function(){
-      self.handleComplete(callbackComplete);
-    })
-    // Always
-    .always( this.handleAlways );
-};
-
-APIRequest.prototype.handleDone = function(data, self) {
-  console.log( "Ajax success." );
-  self.JSONresponse = data;
-};
-
-APIRequest.prototype.handleFail = function(xhr, textStatus, errorThrown) {
-  console.log( "Ajax fail." );
-  console.log(xhr);
-  console.log(textStatus);
-  console.log(errorThrown);
-};
-
-APIRequest.prototype.handleComplete = function(callbackComplete) {
-  console.log("Ajax complete, hide spinner.");  
-  callbackComplete();    
-};
-
-APIRequest.prototype.handleAlways = function() {
-  console.log( "always" );
-  // console.log( data );
-};
-
-APIRequest.prototype.getJSON = function() {
-  return this.JSONresponse;
-}
-
-
-// ------------------------------
-// ------------------------------
-// ------------------------------
 // Graphs
 // ------------------------------
 // ------------------------------
@@ -253,7 +185,7 @@ $(document).ready(function(){
   }  
 
   // Render Pie Chart
-  var pieChartRequest = new APIRequest({
+  var pieChartRequest = new OAuthRequest({
     url:    graph_a_datasource,
     token:  url_access_token
   });
@@ -265,7 +197,7 @@ $(document).ready(function(){
   });    
 
   // Render Line Graph
-  var lineGraphRequest = new APIRequest({
+  var lineGraphRequest = new OAuthRequest({
     url:    graph_b_datasource,
     token:  url_access_token 
   });
