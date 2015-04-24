@@ -10,3 +10,5 @@
 @include font-face(MontserratRegular, '../../fonts/Montserrat/montserrat-regular-webfont', 400);
 @include font-face(MontserratBold,    '../../fonts/Montserrat/montserrat-bold-webfont', 600);
 @include font-face(MontserratBlack,   '../../fonts/Montserrat/montserrat-black-webfont', 900);
+
+@include font-face(FontAwesome,       '../../fonts/FontAwesome/fontawesome-webfont');

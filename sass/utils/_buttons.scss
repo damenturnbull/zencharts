@@ -10,8 +10,8 @@
   display: inline-block;
   text-transform: uppercase;
   height: $btn_height;
-  color: white;
   background-color: $btn_bg;
+  color: white;
   padding: 0px 40px;
   text-decoration: none;
   text-align: center;
@@ -31,13 +31,12 @@
     display: block;
     margin-bottom: 5px;
   }  
+
+  .fa {
+    padding-left: 10px;
+  }
 }
 
-// .btn--dark {
-//   border: solid 3px $btn-dark;
-
-//   &:hover {
-//     color: $btn-dark-hover;
-//     border: solid 3px $btn-dark-hover;
-//   }
-// }
+.btn--selected {
+  background-color: $btn_bg_selected;
+}
