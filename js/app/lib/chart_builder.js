@@ -1,4 +1,3 @@
-'use strict';
 // ------------------------------
 // TODO
 // ------------------------------
@@ -8,6 +7,7 @@
 // Pie Chart
 // ------------------------------
 var PieChartBuilder = (function() {
+  'use strict';
 
   return { 
 

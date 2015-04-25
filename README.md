@@ -1,16 +1,14 @@
-# zencharts - Beautifully Simple Report
+# zencharts
 
-Zencharts uses the High Charts graphing library.
+Zencharts uses the High Charts graphing library. Zencharts also demonstrates how to connect to the Zendesk Developer API using JavaScript and the OAuth protocol.
 
-Zencharts also demonstrates how to connect to the Zendesk Developer API using JavaScript and the OAuth protocol.
-
-Zencharts is not a real company.
+Zencharts is not a real company...
 
 ![Alt text](/images/zencharts-screenshot.png?raw=true "zencharts")
 
 ## Run
 
-The repo includes a small nodejs server for use locally. The server uses the 'connect' and 'serve-static' node modules. 
+The repo includes a small nodejs server local use. 
 
 #### 
     $ node server.js
@@ -21,21 +19,21 @@ Browser access via http://127.0.0.1:8080/
 
 #### Mock Reports
 
-Mock reports are loading by default. These reports use mock data based on Highcharts templates.
+The Highcharts reports are built with mock data by default.
 
 #### Live Reports
 
-Live reports replace the default graph data with data from a Zendesk endpoint. 
+Live reports replace the default graph data with data from a Zendesk API endpoint. 
 
-**In order to run Live reports the user must have access to a zendesk subdomain eg. https://{subdomain}.zendesk.com**
+**In order to run Live reports the user must have access to the test Zendesk subdomain.** ie. https://fando.zendesk.com
 
 To run Live Reports:
 
 1. Clicking on "Live Reports" will redirect you to the a Zendesk subdomain login page.
-2. Login using credentials for your particular domain.
-3. You will be redirected back to the zencharts and the Mock data will be replaced with the Live data.
+2. Login using credentials for your particular domain. (not publicly provided)
+3. You will be redirected back to the zencharts and the mock data will be replaced with the live data.
 
-For example, when 'Live Reports' is successful, the 'Customer Access' pie charts will be updated with data for Zendesk "end users".
+For example, when 'Live Reports' is successful, the 'Customer Access' pie chart will be updated using data from Zendesk "end users".
 
 GET /api/v2/users/search.json?role=end-user
 
@@ -43,13 +41,15 @@ https://developer.zendesk.com/rest_api/docs/core/search#content
 
 ## OAuth and Zendesk
 
-Due to Same Origin Policy it is not possible to send requests to Zendesk API endpoints with Ajax alone. Instead, this application uses Cross Origin Resouce Sharing (CORS) with the OAuth protocol.
+Due to Same Origin Policy it is not possible to send requests to Zendesk API endpoints with client side JavaScript alone. Instead, this application uses Cross Origin Resouce Sharing (CORS) with the OAuth protocol to achieve access.
+
+http://oauth.net/
 
 The OAuth protocol authenticates all requests to the Zendesk API and allows ansychronous requests to API endpoints.
 
 Reference:
 https://developer.zendesk.com/blog/2013/08/02/using-oauth-to-authenticate-with-zendesk-api-v2/
-http://oauth.net/
+
 
 
 ## Original Specification
@@ -79,6 +79,3 @@ Zencharts is tested with Karma and Jasmine.
 
 #### 
     $ karma start
-
-TODO
-- ansychronous testing

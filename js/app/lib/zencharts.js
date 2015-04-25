@@ -2,6 +2,7 @@
 // ZenCharts
 // ------------------------------
 var ZenCharts = (function() {
+  'use strict';
 
   return { 
 
@@ -87,7 +88,6 @@ var ZenCharts = (function() {
       if(this.url_access_token) {
         status.removeClass(class_disconnected).addClass(class_connected);
         icon.removeClass(icon_disconnected).addClass(icon_connected);
-        icon
       } else {
         status.addClass(class_disconnected).removeClass(class_connected);
         icon.removeClass(icon_connected).addClass(icon_disconnected);

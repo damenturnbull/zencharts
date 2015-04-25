@@ -1,3 +1,4 @@
+'use strict';
 // ------------------------------
 // OAuthRequest Prototype
 // ------------------------------
@@ -48,12 +49,12 @@ OAuthRequest.prototype.handleFail = function(xhr, textStatus, errorThrown) {
 };
 
 OAuthRequest.prototype.handleComplete = function(callbackComplete) {
-  console.log("Ajax complete, hide spinner.");  
+  console.log("Ajax complete.");  
   callbackComplete();    
 };
 
 OAuthRequest.prototype.handleAlways = function() {
-  console.log( "Ajax always" );
+  console.log( "Ajax always." );
   // console.log( data );
 };
 
