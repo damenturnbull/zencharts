@@ -25,4 +25,13 @@ describe("Zencharts", function() {
     });
 
   });
+
+
+  xdescribe("#newRequest", function() {
+
+  });
+  
+  xdescribe("#newRequest", function() {
+
+  });
 });
