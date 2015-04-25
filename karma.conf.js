@@ -19,10 +19,10 @@ module.exports = function(config) {
       'js/vendor/jquery-1.11.2.min.js',
       'js/vendor/*.js',
       // Custom
-      'js/custom/app/oauthrequest.js',
+      'js/app/lib/oauthrequest.js',
       'js/custom/highcharts_scaffolding/*.js',
-      'js/custom/app/graph_structures.js',
-      'js/custom/app/zencharts.js',
+      'js/app/lib/graph_structures.js',
+      'js/app/lib/zencharts.js',
       // Specs
       'test/spec/*Spec.js'
     ],

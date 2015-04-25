@@ -8,7 +8,7 @@ var ZenCharts = (function() {
     url_access_token:   null, 
     url_error:          null, 
 
-    source_piechart_mock:  '/js/custom/mock_data/end_users.json',         
+    source_piechart_mock:  '/js/app/mock_data/end_users.json',         
     source_piechart_live:  'https://fando.zendesk.com/api/v2/users/search.json?role=end-user',         
     
     source_linegraph_mock: '',         
