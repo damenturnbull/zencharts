@@ -1,0 +1,35 @@
+{
+  "name": "code-assignment",
+  "version": "1.0.0",
+  "description": "Zencharts uses the High Charts graphing library. Zencharts also demonstrates how to connect to the Zendesk Developer API using JavaScript and the OAuth protocol.",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "compression": "^1.4.3",
+    "connect": "^3.3.5",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-jasmine": "^0.3.5",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.17",
+    "serve-static": "^1.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fandoweb/zencharts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fandoweb/zencharts/issues"
+  },
+  "homepage": "https://github.com/fandoweb/zencharts"
+}

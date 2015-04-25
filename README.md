@@ -8,6 +8,11 @@ Zencharts is not a real company...
 
 ## Run
 
+Node modules are not in the repo. Run npm to update dependencies.
+
+#### 
+    $ npm install
+
 The repo includes a small nodejs server local use. 
 
 #### 
