@@ -20,7 +20,7 @@ module.exports = function(config) {
       'js/vendor/*.js',
       // Custom
       'js/app/lib/oauthrequest.js',
-      'js/custom/highcharts_scaffolding/*.js',
+      'js/app/highcharts_scaffolding/*.js',
       'js/app/lib/chart_builder.js',
       'js/app/lib/zencharts.js',
       // Specs
@@ -55,7 +55,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes
