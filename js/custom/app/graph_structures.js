@@ -1,5 +1,10 @@
 'use strict';
 // ------------------------------
+// TODO
+// ------------------------------
+// TODO - Prototype object for a Generic Chart Builder
+
+// ------------------------------
 // Pie Chart
 // ------------------------------
 var PieChartBuilder = (function() {
@@ -13,6 +18,7 @@ var PieChartBuilder = (function() {
       $('#graphA').highcharts(graphA);           
     }, 
 
+    // TODO - decouple getPercentages
     getPercentages: function(json_data) {
       var end_users       = json_data.users;
       var count_logged_in = 0;
@@ -22,7 +28,7 @@ var PieChartBuilder = (function() {
         // Don't count users that have never logged in
         if(last_login_at != null) {
           // Get dates to compare
-          var last_login_at   = this.convertZendeskDate(last_login_at);
+          var last_login_at   = this.parseZendeskDate(last_login_at);
           var cutoff_date     = this.setCutOffDate(7);
           // Count...
           if(last_login_at >= cutoff_date) {
@@ -36,15 +42,16 @@ var PieChartBuilder = (function() {
       return [perc_logged_in, perc_not_logged_in];
     },
 
-    // TODO tighten date adjustment to account for GMT
-    // Currently the time is ignored
-    convertZendeskDate: function(raw_date) {
+    // Zendesk raw date string: "2015-04-24T01:30:00Z"
+    // TODO - tighten up date calculations (currently H:M:S and Timezone is ignored)
+    parseZendeskDate: function(raw_date) {
       var date_bits = raw_date.split("T");
       var date      = date_bits[0];
       var time      = date_bits[1];
       return new Date(date);
     },
 
+    // Returns date 'x' days prior to today
     setCutOffDate: function(days_before) {
       var date = new Date(); // Today
       return date.setDate( date.getDate() - days_before );   

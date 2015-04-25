@@ -1,6 +1,8 @@
 # zencharts - Beautifully Simple Report
 
-Zencharts demonstrates the use of the High Charts graphing library. Zencharts also connects to the Zendesk Developer API using the OAuth protocol.
+Zencharts uses the High Charts graphing library.
+
+Zencharts also demonstrates how to connect to the Zendesk Developer API using JavaScript and the OAuth protocol.
 
 Zencharts is not a real company.
 

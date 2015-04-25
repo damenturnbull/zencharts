@@ -51,9 +51,9 @@ $bg_main:             #f8f8f8;
 //
 // Fonts
 //
-$font_primary:      "Montserrat", Arial, sans-serif;
-// $font_secondary:    "MontserratBold", Arial, sans-serif;
-$font_heading:      $font_primary;
+$font_primary:      "MontserratRegular", Arial, sans-serif;
+$font_secondary:    $font_primary;
+$font_heading:      "MontserratBold", Arial, sans-serif;
 $monospace_font:    "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
 $color_link:            $color_base;

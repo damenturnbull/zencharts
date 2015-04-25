@@ -17,14 +17,15 @@ var ZenCharts = (function() {
     source_barchart_mock:  '',
     source_barchart_live:  '',
 
-    pie_chart_builder:  PieChartBuilder,
-    line_graph_builder: LineGraphBuilder,
-    bar_chart_builder:  BarChartBuilder,
+    piechart_builder:  PieChartBuilder,
+    linegraph_builder: LineGraphBuilder,
+    barchart_builder:  BarChartBuilder,
 
     init: function() {
       // Setup
       this.setURLHashParameters();
       this.styleGraphButtons();
+      this.toggleConnectionStatus();
       // Make Charts
       this.makePieChart();
       this.makeLineGraph();
@@ -67,64 +68,74 @@ var ZenCharts = (function() {
       this.graphButtonListener();
     },    
 
+    // Set style of mock and live buttons
+    toggleConnectionStatus: function() {
+      var status              = $('.header__status');
+      var class_connected     = 'header__status--connected';
+      var class_disconnected  = 'header__status--disconnected';
+      var icon                = status.find('.fa');
+      var icon_connected      = 'fa-bolt';
+      var icon_disconnected   = 'fa-ban';
+      // Show selection
+      if(this.url_access_token) {
+        status.removeClass(class_disconnected).addClass(class_connected);
+        icon.removeClass(icon_disconnected).addClass(icon_connected);
+        icon
+      } else {
+        status.addClass(class_disconnected).removeClass(class_connected);
+        icon.removeClass(icon_connected).addClass(icon_disconnected);
+      }
+    },    
+
     // Show spinner on graph buttons
     graphButtonListener: function() {
       $('.btn--report').click(function(event){
         $(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin');
       });
-    },
+    }, 
 
-    // TODO - DRY these up...
-    makePieChart: function(chart_name) {
+    makePieChart: function() {
+      var self = this;
       var datasource = (this.url_access_token) ? 
                         this.source_piechart_live  : 
                         this.source_piechart_mock;
-      // Request additional data
-      var piechart_request = new OAuthRequest({
-        url:    datasource,
-        token:  this.url_access_token
-      });
-      // Render Graph
-      var self = this;
-      piechart_request.makeAjaxRequest(function() {
-        if(piechart_request.JSONresponse == null) return;
-        self.pie_chart_builder.init(piechart_request.JSONresponse);         
-      });     
+      var requestObj = this.newRequest(datasource);
+      this.makeRequestBuildChart(requestObj, self.piechart_builder);
     },
 
     makeLineGraph: function() {
+      var self = this;
       var datasource = (this.url_access_token) ? 
                         this.source_linegraph_live : 
                         this.source_linegraph_mock; 
-      // Request additional data
-      var linegraph_request = new OAuthRequest({
-        url:    datasource,
-        token:  this.url_access_token 
-      });
-      // Render Graph
-      var self = this;
-      linegraph_request.makeAjaxRequest(function() {
-        if(linegraph_request.JSONresponse == null) return;
-        self.line_graph_builder.init(linegraph_request.JSONresponse);         
-      });    
+      var requestObj = this.newRequest(datasource);
+      this.makeRequestBuildChart(requestObj, self.linegraph_builder);
     },
 
     makeBarChart: function() {
+      var self = this;
       var datasource = (this.url_access_token) ? 
                         this.source_barchart_live : 
                         this.source_barchart_mock;    
-      // Request additional data
-      var barchart_request = new OAuthRequest({
+      var requestObj = this.newRequest(datasource);
+      this.makeRequestBuildChart(requestObj, self.barchart_builder);
+    },
+
+    newRequest: function(datasource) {
+      return new OAuthRequest({
         url:    datasource,
-        token:  this.url_access_token 
-      });
+        token:  this.url_access_token
+      });   
+    },
+
+    // Send request and Re-Render Graph
+    makeRequestBuildChart: function(requestObj, chart_builder) {
       // Render Graph
-      var self = this;
-      barchart_request.makeAjaxRequest(function() {
-        if(barchart_request.JSONresponse == null) return;
-        self.bar_chart_builder.init(barchart_request.JSONresponse);         
+      requestObj.makeAjaxRequest(function() {
+        if(requestObj.JSONresponse == null) return;
+        chart_builder.init(requestObj.JSONresponse);         
       });  
-    }     
+    }
 
   };
 }());

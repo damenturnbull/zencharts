@@ -12,7 +12,7 @@
 }
 
 .header__logo {
-  padding: 0px 0px 40px 0px;
+  padding: 0px 0px 80px 0px;
   @include font-size(28, 2);
 
   small {
@@ -27,9 +27,17 @@
 
 .header__desc {
   padding: 20px 0px 60px 0px;
-  @include font-size(18);
+  @include font-size(16);
 }
 
 .header__link {
   color: white;
+}
+
+.header__status {
+  margin-top: 15px;
+}
+
+.header__status--disconnected {
+  color: #cbcbcb;
 }
