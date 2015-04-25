@@ -14,12 +14,12 @@ var ZenCharts = (function() {
     source_linegraph_mock: '',         
     source_linegraph_live: '',
     
-    source_barchart_mock:  '',
-    source_barchart_live:  '',
+    source_bargraph_mock:  '',
+    source_bargraph_live:  '',
 
     piechart_builder:  PieChartBuilder,
     linegraph_builder: LineGraphBuilder,
-    barchart_builder:  BarChartBuilder,
+    bargraph_builder:  BarGraphBuilder,
 
     init: function() {
       // Setup
@@ -68,6 +68,13 @@ var ZenCharts = (function() {
       this.graphButtonListener();
     },    
 
+    // Show spinner on graph buttons
+    graphButtonListener: function() {
+      $('.btn--report').click(function(event){
+        $(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin');
+      });
+    }, 
+
     // Set style of mock and live buttons
     toggleConnectionStatus: function() {
       var status              = $('.header__status');
@@ -86,13 +93,6 @@ var ZenCharts = (function() {
         icon.removeClass(icon_connected).addClass(icon_disconnected);
       }
     },    
-
-    // Show spinner on graph buttons
-    graphButtonListener: function() {
-      $('.btn--report').click(function(event){
-        $(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin');
-      });
-    }, 
 
     makePieChart: function() {
       var self = this;
@@ -115,10 +115,10 @@ var ZenCharts = (function() {
     makeBarChart: function() {
       var self = this;
       var datasource = (this.url_access_token) ? 
-                        this.source_barchart_live : 
-                        this.source_barchart_mock;    
+                        this.source_bargraph_live : 
+                        this.source_bargraph_mock;    
       var requestObj = this.newRequest(datasource);
-      this.makeRequestBuildChart(requestObj, self.barchart_builder);
+      this.makeRequestBuildChart(requestObj, self.bargraph_builder);
     },
 
     newRequest: function(datasource) {

@@ -1,4 +1,4 @@
-var graphA = {
+var PieChartScaffold = {
   chart: {
     plotBackgroundColor: null,
     plotBorderWidth: null,
@@ -8,7 +8,7 @@ var graphA = {
     text: 'Customer Access - Last 7 Days',
   },
   subtitle: {
-    text: 'Customers that have logged in to the system.'
+    text: 'End Users that have logged in to Zendesk.'
   },
   tooltip: {
     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

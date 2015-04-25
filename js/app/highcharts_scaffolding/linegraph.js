@@ -1,7 +1,7 @@
-var graphB = 
+var LineGraphScaffold = 
 {  
   title:{  
-    text:"Customer Contact - Last 15 Days",
+    text:"Customer Contact - Last 15 Days <strong>(MOCK ONLY)</strong>",
   },
   subtitle: {
     text: "Customers that have contacted Support."

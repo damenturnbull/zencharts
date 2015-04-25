@@ -21,7 +21,7 @@ module.exports = function(config) {
       // Custom
       'js/app/lib/oauthrequest.js',
       'js/custom/highcharts_scaffolding/*.js',
-      'js/app/lib/graph_structures.js',
+      'js/app/lib/chart_builder.js',
       'js/app/lib/zencharts.js',
       // Specs
       'test/spec/*Spec.js'

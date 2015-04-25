@@ -13,9 +13,9 @@ var PieChartBuilder = (function() {
 
     init: function(data) {
       var percentages = this.getPercentages(data);
-      graphA.series[0].data[0].y = percentages[0];
-      graphA.series[0].data[1].y = percentages[1]; 
-      $('#graphA').highcharts(graphA);           
+      PieChartScaffold.series[0].data[0].y = percentages[0];
+      PieChartScaffold.series[0].data[1].y = percentages[1]; 
+      $('#graphA').highcharts(PieChartScaffold);           
     }, 
 
     // TODO - decouple getPercentages
@@ -68,7 +68,7 @@ var LineGraphBuilder = (function() {
   return { 
 
     init: function(data) {
-      $('#graphB').highcharts(graphB);           
+      $('#graphB').highcharts(LineGraphScaffold);           
     }
 
     // TODO - Integrate dynamic live data
@@ -79,12 +79,12 @@ var LineGraphBuilder = (function() {
 // ------------------------------
 // Bar Chart
 // ------------------------------
-var BarChartBuilder = (function() {
+var BarGraphBuilder = (function() {
 
   return { 
 
     init: function(data) {
-      $('#graphC').highcharts(graphC);           
+      $('#graphC').highcharts(BarGraphScaffold);           
     }
 
     // TODO - Integrate dynamic live data

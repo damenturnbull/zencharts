@@ -1,10 +1,10 @@
-var graphC = 
+var BarGraphScaffold = 
 {       
   chart: {
     type: 'column'
   },
   title: {
-    text: 'Tickets Solved - Last 7 Days'
+    text: 'Tickets Solved - Last 7 Days <strong>(MOCK ONLY)</strong>'
   },
   subtitle: {
     text: "Number of tickets solved by each Agent."
