@@ -1715,11 +1715,11 @@
   font-weight: normal;
   font-style: normal; }
 @font-face {
-  font-family: FontAwesome;
+  font-family: 'FontAwesome';
+  src: url("../../fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("../../fonts/FontAwesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/FontAwesome/fontawesome-webfont.woff2") format("woff2"), url("../../fonts/FontAwesome/fontawesome-webfont.woff") format("woff"), url("../../fonts/FontAwesome/fontawesome-webfont.ttf") format("truetype"), url("../../fonts/FontAwesome/fontawesome-webfont.svg") format("svg");
   font-weight: normal;
-  font-style: normal;
-  src: font-url("../../fonts/FontAwesome/fontawesome-webfont.eot");
-  src: font-url("../../fonts/FontAwesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), font-url("../../fonts/FontAwesome/fontawesome-webfont.woff") format("woff"), font-url("../../fonts/FontAwesome/fontawesome-webfont.ttf") format("truetype"), font-url("../../fonts/FontAwesome/fontawesome-webfont.svg#FontAwesome") format("svg"); }
+  font-style: normal; }
 .debug1 {
   background-color: #fdc689; }
 
