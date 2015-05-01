@@ -18,9 +18,9 @@ The repo includes a small nodejs server local use. Alternatively, gulp is config
 #### 
     $ node server.js
     // OR
-    $ gulp
+    $ gulp server
 
-Browser access via http://127.0.0.1:8080/
+Browser access via http://localhost:3000/
 
 ## Highcharts
 

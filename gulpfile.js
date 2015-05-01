@@ -31,7 +31,7 @@ var src_sass        = dir_sass + file_sass,
 // --------------------------------
 // Default setup
 // 
-gulp.task('default', ['serve']);
+gulp.task('default', ['server']);
 
 // --------------------------------
 // SASS - compile and minify
@@ -48,13 +48,12 @@ gulp.task('sass', function() {
 // --------------------------------
 // Static Server + watching scss/html files
 // 
-gulp.task('serve', ['sass'], function() {
+gulp.task('server', ['sass'], function() {
 
     browserSync.init({
       server: {
         baseDir: './',
-      },
-      port: 8080
+      }
     });
 
     gulp.watch(dir_sass + "**/*.scss", ['sass']);
