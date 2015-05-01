@@ -13,10 +13,12 @@ Node modules are not in the repo. Run npm to update dependencies.
 #### 
     $ npm install
 
-The repo includes a small nodejs server local use. 
+The repo includes a small nodejs server local use. Alternatively, gulp is configured with a server.
 
 #### 
     $ node server.js
+    // OR
+    $ gulp
 
 Browser access via http://127.0.0.1:8080/
 
