@@ -23,13 +23,15 @@
       <h1 class="header__title">Beautifully Simple <br/>Report</h1>
       <p class="header__desc">Zencharts creates reports with the <a class="header__link" href="http://www.highcharts.com/">High Charts</a> graphing library.<br/>Zencharts also demonstrates how to connect to the <a class="header__link" href="https://developer.zendesk.com/rest_api/docs/core/introduction">Zendesk Developer API</a><br/> using JavaScript and the <a class="header__link" href="http://oauth.net/">OAuth</a> protocol.</p>
 
-      <!-- Calls to Action -->
-      <a class="btn btn--primary btn--report" id="btnMockReports" href="/">Mock Reports
+      <!-- Report Buttons -->
+      <div id="reportButtons"></div>
+
+<!--       <a class="btn btn--primary btn--report" id="btnMockReports" href="/">Mock Reports
         <span class="fa fa-bar-chart"></span>
       </a>      
       <a class="btn btn--primary btn--report" id="btnLiveReports" href="https://fando.zendesk.com/oauth/authorizations/new?client_id=beautifully_simple_report&amp;response_type=token&amp;redirect_uri=http://localhost:3000/&amp;scope=read">Live Reports
         <span class="fa fa-bar-chart"></span>
-      </a>
+      </a> -->
       <p class="header__status header__status--disconnected"><span class="fa fa-ban"></span>&nbsp;&nbsp;OAuth - https://fando.zendesk.com</p>
     </section>
   </header>
@@ -54,6 +56,8 @@
   <!-- Vendor scripts -->
   <script src="js/vendor/jquery-1.11.2.min.js"></script>
   <script src="js/vendor/highcharts-4.1.5.min.js"></script>
+  <script src="js/vendor/react-0.13.2.min.js"></script>
+  <script src="js/vendor/JSXTransformer-0.13.2.js"></script>  
 
   <!-- Custom scripts -->
   <script src="js/app/lib/oauthrequest.js"></script>
@@ -64,6 +68,7 @@
 
   <script src="js/app/lib/chart_builder.js"></script>
   <script src="js/app/lib/zencharts.js"></script>
+  <script src="js/app/lib/components.js" type="text/jsx" ></script>  
 
 </body>
 </html>

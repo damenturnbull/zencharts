@@ -55,25 +55,25 @@ var ZenCharts = (function() {
 
     // Set style of mock and live buttons
     styleGraphButtons: function() {
-      var btn_mock        = $('#btnMockReports');
-      var btn_live        = $('#btnLiveReports');
-      var class_selected  = 'btn--selected';
-      // Show selection
-      if(this.url_access_token) {
-        btn_mock.removeClass(class_selected);
-        btn_live.addClass(class_selected);
-      } else {
-        btn_mock.addClass(class_selected);
-        btn_live.removeClass(class_selected);
-      }
-      this.graphButtonListener();
+      // var btn_mock        = $('#btnMockReports');
+      // var btn_live        = $('#btnLiveReports');
+      // var class_selected  = 'btn--selected';
+      // // Show selection
+      // if(this.url_access_token) {
+      //   btn_mock.removeClass(class_selected);
+      //   btn_live.addClass(class_selected);
+      // } else {
+      //   btn_mock.addClass(class_selected);
+      //   btn_live.removeClass(class_selected);
+      // }
+      // this.graphButtonListener();
     },    
 
     // Show spinner on graph buttons
     graphButtonListener: function() {
-      $('.btn--report').click(function(event){
-        $(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin');
-      });
+      // $('.btn--report').click(function(event){
+      //   $(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin');
+      // });
     }, 
 
     // Set style of mock and live buttons
