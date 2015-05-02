@@ -8,56 +8,60 @@ function OAuthRequest(options) {
   this.JSONresponse   = null;
 };
 
-OAuthRequest.prototype.makeAjaxRequest = function(callbackComplete) {
-  console.log('request made');
-  var self = this;
-  var ajax_options = {
-    method: 'GET',
-    async: true,
-    // Add a Basic Auth token in the header
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader("Authorization", "Bearer " + self.token);
-    }
-  };
+OAuthRequest.prototype = {
 
-  // Make the request...
-  $.ajax(this.url, ajax_options)
-    // Done
-    .done(function(data) {
-      self.handleDone(data, self)
-    })
-    // Failure
-    .fail( this.handleFail )
-    // Complete
-    .complete(function(){
-      self.handleComplete(callbackComplete);
-    })
-    // Always
-    .always( this.handleAlways );
-};
+  makeAjaxRequest: function(callbackComplete) {
+    console.log('request made');
+    var self = this;
+    var ajax_options = {
+      method: 'GET',
+      async: true,
+      // Add a Basic Auth token in the header
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Authorization", "Bearer " + self.token);
+      }
+    };
 
-OAuthRequest.prototype.handleDone = function(data, self) {
-  console.log( "Ajax success." );
-  self.JSONresponse = data;
-};
+    // Make the request...
+    $.ajax(this.url, ajax_options)
+      // Done
+      .done(function(data) {
+        self.handleDone(data, self)
+      })
+      // Failure
+      .fail( this.handleFail )
+      // Complete
+      .complete(function(){
+        self.handleComplete(callbackComplete);
+      })
+      // Always
+      .always( this.handleAlways );
+  },
 
-OAuthRequest.prototype.handleFail = function(xhr, textStatus, errorThrown) {
-  console.log( "Ajax fail." );
-  // console.log(xhr);
-  // console.log(textStatus);
-  // console.log(errorThrown);
-};
+  handleDone: function(data, self) {
+    console.log( "Ajax success." );
+    self.JSONresponse = data;
+  },
 
-OAuthRequest.prototype.handleComplete = function(callbackComplete) {
-  console.log("Ajax complete.");  
-  callbackComplete();    
-};
+  handleFail: function(xhr, textStatus, errorThrown) {
+    console.log( "Ajax fail." );
+    // console.log(xhr);
+    // console.log(textStatus);
+    // console.log(errorThrown);
+  },
 
-OAuthRequest.prototype.handleAlways = function() {
-  console.log( "Ajax always." );
-  // console.log( data );
-};
+  handleComplete: function(callbackComplete) {
+    console.log("Ajax complete.");  
+    callbackComplete();    
+  },
 
-OAuthRequest.prototype.getJSON = function() {
-  return this.JSONresponse;
+  handleAlways: function() {
+    console.log( "Ajax always." );
+    // console.log( data );
+  },
+
+  getJSON: function() {
+    return this.JSONresponse;
+  }  
+
 }

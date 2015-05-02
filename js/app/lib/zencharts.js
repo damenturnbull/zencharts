@@ -3,10 +3,10 @@
 // ------------------------------
 var ZenCharts = (function() {
   'use strict';
-
+    
   return { 
 
-    url_access_token:   null, 
+    url_access_token:   null,
     url_error:          null, 
 
     source_piechart_mock:  '/js/app/mock_data/end_users.json',         
@@ -95,35 +95,23 @@ var ZenCharts = (function() {
     },    
 
     makePieChart: function() {
-      var self = this;
-      var datasource = (this.url_access_token) ? 
-                        this.source_piechart_live  : 
-                        this.source_piechart_mock;
-      var requestObj = this.newRequest(datasource);
-      this.makeRequestBuildChart(requestObj, self.piechart_builder);
+      var source = (this.url_access_token) ? this.source_piechart_live : this.source_piechart_mock;
+      this.makeRequestBuildChart( this.newRequest(source), this.piechart_builder );
     },
 
     makeLineGraph: function() {
-      var self = this;
-      var datasource = (this.url_access_token) ? 
-                        this.source_linegraph_live : 
-                        this.source_linegraph_mock; 
-      var requestObj = this.newRequest(datasource);
-      this.makeRequestBuildChart(requestObj, self.linegraph_builder);
+      var source = (this.url_access_token) ? this.source_linegraph_live : this.source_linegraph_mock; 
+      this.makeRequestBuildChart( this.newRequest(source), this.linegraph_builder );
     },
 
     makeBarChart: function() {
-      var self = this;
-      var datasource = (this.url_access_token) ? 
-                        this.source_bargraph_live : 
-                        this.source_bargraph_mock;    
-      var requestObj = this.newRequest(datasource);
-      this.makeRequestBuildChart(requestObj, self.bargraph_builder);
+      var source = (this.url_access_token) ? this.source_bargraph_live : this.source_bargraph_mock;    
+      this.makeRequestBuildChart( this.newRequest(source), this.bargraph_builder );
     },
 
-    newRequest: function(datasource) {
+    newRequest: function(source) {
       return new OAuthRequest({
-        url:    datasource,
+        url:    source,
         token:  this.url_access_token
       });   
     },
