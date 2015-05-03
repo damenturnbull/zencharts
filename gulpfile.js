@@ -13,6 +13,7 @@ var gulp            = require('gulp'),
 //
 var dir_sass        = './sass/',
     dir_css         = './css/',
+    dir_js          = './js/',
     dir_sass_maps   = './maps/';
 
 // --------------------------------
@@ -57,5 +58,6 @@ gulp.task('server', ['sass'], function() {
     });
 
     gulp.watch(dir_sass + "**/*.scss", ['sass']);
+    gulp.watch(dir_js   + "**/*.js").on('change', reload);
     gulp.watch("index.html").on('change', reload);
 });

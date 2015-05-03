@@ -25,8 +25,6 @@ var ZenCharts = (function() {
     init: function() {
       // Setup
       this.setURLHashParameters();
-      this.styleGraphButtons();
-      this.toggleConnectionStatus();
       // Make Charts
       this.makePieChart();
       this.makeLineGraph();
@@ -51,48 +49,7 @@ var ZenCharts = (function() {
     getURLHashParameter: function(name) {
       // Reference: http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
       return decodeURIComponent((new RegExp('[#|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.hash)||[,""])[1].replace(/\+/g, '%20'))||null;
-    },
-
-    // Set style of mock and live buttons
-    styleGraphButtons: function() {
-      // var btn_mock        = $('#btnMockReports');
-      // var btn_live        = $('#btnLiveReports');
-      // var class_selected  = 'btn--selected';
-      // // Show selection
-      // if(this.url_access_token) {
-      //   btn_mock.removeClass(class_selected);
-      //   btn_live.addClass(class_selected);
-      // } else {
-      //   btn_mock.addClass(class_selected);
-      //   btn_live.removeClass(class_selected);
-      // }
-      // this.graphButtonListener();
-    },    
-
-    // Show spinner on graph buttons
-    graphButtonListener: function() {
-      // $('.btn--report').click(function(event){
-      //   $(this).find('.fa').removeClass('fa-bar-chart').addClass('fa-refresh fa-spin');
-      // });
-    }, 
-
-    // Set style of mock and live buttons
-    toggleConnectionStatus: function() {
-      var status              = $('.header__status');
-      var class_connected     = 'header__status--connected';
-      var class_disconnected  = 'header__status--disconnected';
-      var icon                = status.find('.fa');
-      var icon_connected      = 'fa-bolt';
-      var icon_disconnected   = 'fa-ban';
-      // Show selection
-      if(this.url_access_token) {
-        status.removeClass(class_disconnected).addClass(class_connected);
-        icon.removeClass(icon_disconnected).addClass(icon_connected);
-      } else {
-        status.addClass(class_disconnected).removeClass(class_connected);
-        icon.removeClass(icon_connected).addClass(icon_disconnected);
-      }
-    },    
+    },  
 
     makePieChart: function() {
       var source = (this.url_access_token) ? this.source_piechart_live : this.source_piechart_mock;
