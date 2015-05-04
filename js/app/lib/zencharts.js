@@ -15,8 +15,8 @@ var ZenCharts = (function() {
     source_linegraph_mock: '',         
     source_linegraph_live: '',
     
-    source_bargraph_mock:  '',
-    source_bargraph_live:  '',
+    source_bargraph_mock:  '/js/app/mock_data/tickets_solved.json',
+    source_bargraph_live:  'https://fando.zendesk.com/api/v2/views/51787888/tickets.json',
 
     piechart_builder:  PieChartBuilder,
     linegraph_builder: LineGraphBuilder,

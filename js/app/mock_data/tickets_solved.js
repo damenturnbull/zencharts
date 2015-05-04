@@ -481,7 +481,6 @@ if(typeof json !== 'object') {
 }
 
 var assignees = {};
-
 for(var i = 0; i < json.count; i++) {
    var assignee_id = json.tickets[i].assignee_id;
    if( !(assignee_id in assignees) ) {
@@ -490,4 +489,6 @@ for(var i = 0; i < json.count; i++) {
     assignees[assignee_id] += 1;
   }
 }
+
+console.log(assignees);
 

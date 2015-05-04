@@ -8,8 +8,19 @@
 }
 
 .graph__inner {
+  position: relative;
   padding: 40px;
   min-width: 300px;
   min-height: 400px;
   background: white;
+}
+
+.graph__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -13px;
+  margin-top: -15px;
+  color: #cccccc;
+  font-size: 30px;
 }

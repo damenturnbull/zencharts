@@ -4,7 +4,7 @@ var BarGraphScaffold =
     type: 'column'
   },
   title: {
-    text: 'Tickets Solved - Last 7 Days <strong>(MOCK ONLY)</strong>'
+    text: 'Tickets Solved - Last 7 Days'
   },
   subtitle: {
     text: "Number of tickets solved by each Agent."

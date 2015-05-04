@@ -15,7 +15,7 @@ var PieChartBuilder = (function() {
       var percentages = this.getPercentages(data);
       PieChartScaffold.series[0].data[0].y = percentages[0];
       PieChartScaffold.series[0].data[1].y = percentages[1]; 
-      $('#graphA').highcharts(PieChartScaffold);           
+      $('#graphA').remove('.graph__loader').highcharts(PieChartScaffold);           
     }, 
 
     // TODO - decouple getPercentages
@@ -68,7 +68,11 @@ var LineGraphBuilder = (function() {
   return { 
 
     init: function(data) {
-      $('#graphB').highcharts(LineGraphScaffold);           
+      this.renderChart();
+    },
+
+    renderChart: function() {
+      $('#graphB').remove('.graph__loader').highcharts(LineGraphScaffold);           
     }
 
     // TODO - Integrate dynamic live data
@@ -83,11 +87,59 @@ var BarGraphBuilder = (function() {
 
   return { 
 
-    init: function(data) {
-      $('#graphC').highcharts(BarGraphScaffold);           
-    }
+    assignees:  {},
+    categories: [],
+    series:     [],
 
-    // TODO - Integrate dynamic live data
+    init: function(json) {
+      if(typeof json !== 'object') return false;
+      this.getTotalSolvedByAssignees(json);
+      this.requestAssigneeNames();
+    },
+
+    getTotalSolvedByAssignees: function(json) {
+      if(json.count   == undefined) return false;
+      if(json.tickets == undefined) return false;
+      for(var i = 0; i < json.count; i++) {
+         var assignee_id = json.tickets[i].assignee_id;
+         if( !(assignee_id in this.assignees) ) {
+          this.assignees[assignee_id] = 1;
+        } else if( (assignee_id in this.assignees) ) {
+          this.assignees[assignee_id] += 1;
+        }
+      }
+    },
+
+    requestAssigneeNames: function() {
+      // Send another request for the names of the assignees
+      var live_source = 'https://fando.zendesk.com/api/v2/users/search.json?role=agent',
+          mock_source = '/js/app/mock_data/agents.json',
+          source      = (ZenCharts.url_access_token) ? live_source : mock_source,
+          self        = this,
+          req         = ZenCharts.newRequest(source);
+
+      req.makeAjaxRequest(function() {
+        if(req.JSONresponse == null) return;
+        self.setAssigneeNames(req.JSONresponse);         
+      });        
+    },
+
+    setAssigneeNames: function(json) {
+      for(var i = 0; i < json.count; i++) {
+        var agent_id = json.users[i].id;
+        if( (agent_id in this.assignees) ) {
+          this.categories.push(json.users[i].name);
+          this.series.push(this.assignees[agent_id]);
+        }
+      }
+      this.renderChart();
+      BarGraphScaffold.xAxis.categories = this.categories;
+      BarGraphScaffold.series[0].data   = this.series; 
+    },
+
+    renderChart: function() {
+      $('#graphC').remove('.graph__loader').highcharts(BarGraphScaffold);           
+    }
 
   };
 }());

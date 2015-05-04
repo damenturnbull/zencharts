@@ -1,3 +1,6 @@
+// -----------------------------------
+// PieChartBuilder
+// -----------------------------------
 describe("PieChartBuilder", function() {
 
   describe("#parseZendeskDate", function() {
@@ -19,5 +22,87 @@ describe("PieChartBuilder", function() {
       expect(PieChartBuilder.setCutOffDate(15)).toEqual(date);
     });
   });
+});
 
+
+
+// -----------------------------------
+// BarChartBuilder
+// -----------------------------------
+describe("BarChartBuilder", function() {
+
+  describe("#init", function() {
+
+    it("disallows a String to be supplied as an argument", function() {
+      var json = "string";
+      expect(BarGraphBuilder.init(json)).toEqual(false);
+    });
+  });
+
+  describe("#getTotalSolvedByAssignees", function() {
+
+    beforeEach(function() {
+
+    });
+
+    it("returns false if JSON count undefined", function() {
+      var json = {
+         "tickets":[]
+        };
+      expect(BarGraphBuilder.getTotalSolvedByAssignees(json)).toEqual(false);
+    });
+
+    it("returns false if JSON tickets undefined", function() {
+      var json = { "count": 9 };
+      expect(BarGraphBuilder.getTotalSolvedByAssignees(json)).toEqual(false);
+    });
+
+    it("when supplied with correct JSON, builds the assignees object correctly", function() {
+      var json = {
+         "tickets":[
+            {
+               "status":"solved",
+               "assignee_id":880649968,
+            },
+            {
+               "status":"solved",
+               "assignee_id":880649968,
+            },
+            {
+               "status":"solved",
+               "assignee_id":888902307,
+            },
+            {
+               "status":"solved",
+               "assignee_id":888902307,
+            },
+            {
+               "status":"solved",
+               "assignee_id":888902307,
+            },
+            {
+               "status":"solved",
+               "assignee_id":895355398,
+            },
+            {
+               "status":"solved",
+               "assignee_id":895355398,
+            },
+            {
+               "status":"solved",
+               "assignee_id":895355398,
+            },
+            {
+               "status":"solved",
+               "assignee_id":895359518,
+            }
+         ],
+         "count":9
+      };
+      var assignees = { '880649968': 2, '888902307': 3, '895355398': 3, '895359518': 1 };
+      BarGraphBuilder.getTotalSolvedByAssignees(json);
+      expect(BarGraphBuilder.assignees).toEqual(assignees);
+    });
+
+  });
 });
