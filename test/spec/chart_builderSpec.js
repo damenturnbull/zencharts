@@ -41,10 +41,6 @@ describe("BarChartBuilder", function() {
 
   describe("#getTotalSolvedByAssignees", function() {
 
-    beforeEach(function() {
-
-    });
-
     it("returns false if JSON count undefined", function() {
       var json = {
          "tickets":[]

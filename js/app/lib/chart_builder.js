@@ -132,9 +132,9 @@ var BarGraphBuilder = (function() {
           this.series.push(this.assignees[agent_id]);
         }
       }
-      this.renderChart();
       BarGraphScaffold.xAxis.categories = this.categories;
       BarGraphScaffold.series[0].data   = this.series; 
+      this.renderChart();
     },
 
     renderChart: function() {
