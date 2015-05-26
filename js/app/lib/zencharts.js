@@ -1,13 +1,13 @@
 // ------------------------------
 // ZenCharts
 // ------------------------------
-var ZenCharts = (function() {
+var ZenCharts = (function (){
   'use strict';
     
-  return { 
+  var url_access_token  = null,
+      url_error         = null;
 
-    url_access_token:   null,
-    url_error:          null, 
+  return { 
 
     source_piechart_mock:  '/js/app/mock_data/end_users.json',         
     source_piechart_live:  'https://fando.zendesk.com/api/v2/users/search.json?role=end-user',         
@@ -21,15 +21,6 @@ var ZenCharts = (function() {
     piechart_builder:  PieChartBuilder,
     linegraph_builder: LineGraphBuilder,
     bargraph_builder:  BarGraphBuilder,
-
-    init: function() {
-      // Setup
-      this.setURLHashParameters();
-      // Make Charts
-      this.makePieChart();
-      this.makeLineGraph();
-      this.makeBarChart();
-    },
 
     setURLHashParameters: function() {
       this.url_access_token = this.getURLHashParameter("access_token");
@@ -88,6 +79,13 @@ var ZenCharts = (function() {
 // ------------------------------
 // Runner
 // ------------------------------
-$(document).ready( ZenCharts.init() );
+$(document).ready(function() {
+  // Check for URL hash
+  ZenCharts.setURLHashParameters();
+  // Make Charts
+  ZenCharts.makePieChart();
+  ZenCharts.makeLineGraph();
+  ZenCharts.makeBarChart();
+});
 
 
